@@ -21,7 +21,9 @@ def get_poly(shpfile):
 	### make inputs
 	poly = [(float(i[0]),float(i[1])) for i in allshps[0].shape.points]
 	return poly
+
 	
+
 def check_xys_in_poly(xpt, ypt, poly):
 	""" pass in a xy and will return true or false if the point is found within the 1 poly"""
 	found = ''
@@ -107,7 +109,7 @@ def create_bufferxys(inputshp):
 	#then filter out the ones that are in the polygon
 	
 def check_bufferxys(inputshp, x, y):
-	#sample x and y are 41.89882,-87.62407
+	#sample y and x are 41.89882,-87.62407
 	""" new function for just checking to see if input points are within the buffered area of 50 meters """
 	# example of lat(y) and long (x) for Illinois is 45.12345, -87.12345
 	# do everything as xy
@@ -127,7 +129,9 @@ def check_bufferxys(inputshp, x, y):
 		secondtriangle = solve_triangle(x, y, prevx, prevy, thisx, thisy)
 		if secondtriangle <= distance:
 			pericheck = "IN"
+			print pericheck
 			return pericheck
+	print pericheck
 	return pericheck
 		
 	
