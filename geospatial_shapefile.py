@@ -109,7 +109,7 @@ def create_bufferxys(inputshp):
 	#then filter out the ones that are in the polygon
 	
 def check_bufferxys(inputshp, x, y):
-	#sample y and x are 41.89882,-87.62407
+	#sample y and x are 41.8910658062,-87.636381512
 	""" new function for just checking to see if input points are within the buffered area of 50 meters """
 	# example of lat(y) and long (x) for Illinois is 45.12345, -87.12345
 	# do everything as xy
@@ -270,11 +270,15 @@ def get_triangle_height(sidea, sideb, sidec):
 	
 	
 def calc_tri_angle(sega, segb, segc):
-	temp = ((float(sega) * float(sega)) + (float(segb) * float(segb)) - (float(segc) * float(segc)) ) / (2 * float(sega) * float(segb))
-	if ( 1 >= temp >= -1 ):
-		return math.degrees(math.acos(temp))
-	else:
+	try:
+		temp = ((float(sega) * float(sega)) + (float(segb) * float(segb)) - (float(segc) * float(segc)) ) / (2 * float(sega) * float(segb))
+		if ( 1 >= temp >= -1 ):
+			return math.degrees(math.acos(temp))
+		else:
+			return "No solution"
+	except:
 		return "No solution"
+		pass
 	
 	
 def get_btri_height(sa, sb, sc):
